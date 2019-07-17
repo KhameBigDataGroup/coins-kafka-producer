@@ -1,7 +1,6 @@
 import json
 
 import websocket
-from confluent_kafka import Producer
 import logging
 
 from kafka import store_in_big_data
