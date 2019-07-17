@@ -7,5 +7,5 @@ conf = {'bootstrap.servers': os.environ.get('BOOSTRAP_SERVER'),
         'client.id': os.environ.get('CLIENT_ID'),
         }
 
-BTC_BLOCK_TOPIC = 'btc_block'
-BTC_TRANSACTION_TOPIC = 'btc_transactions'
+BTC_BLOCK_TOPIC = 'btc-block'
+BTC_TRANSACTION_TOPIC = 'btc-transactions'
