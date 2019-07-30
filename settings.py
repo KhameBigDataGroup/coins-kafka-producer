@@ -8,4 +8,5 @@ conf = {'bootstrap.servers': os.environ.get('BOOSTRAP_SERVER'),
         }
 
 BTC_BLOCK_TOPIC = 'btc-block'
-BTC_TRANSACTION_TOPIC = 'btc-transactions'
+BTC_HOST = 'localhost'
+BTC_PORT = '8332'
