@@ -5,6 +5,7 @@ import logging
 from kafka import store_in_big_data
 from settings import BTC_BLOCK_TOPIC, BTC_HOST, BTC_PORT
 
+logger = logging.getLogger(__name__)
 
 def get_block_hash(height):
     response = requests.get("http://{}:{}/rest/blockhashbyheight/{}.json".format(BTC_HOST, BTC_PORT, height))
@@ -34,6 +35,7 @@ def btc():
     while True:
         block_hash = get_block_hash(last_height)
         if block_hash:
+            logger.info('storing block {}.'.format(block_hash))
             if store_in_big_data(BTC_BLOCK_TOPIC, get_block(block_hash)):
                 last_height += 1
                 with open('checkpoints/btc', 'w') as file:
