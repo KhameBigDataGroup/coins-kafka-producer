@@ -9,7 +9,6 @@ from settings import BTC_BLOCK_TOPIC, BTC_HOST, BTC_PORT
 def get_block_hash(height):
     response = requests.get("http://{}:{}/rest/blockhashbyheight/{}.json".format(BTC_HOST, BTC_PORT, height))
     
-    print(response.text)
     if response.status_code != 200:
         return
     
@@ -35,11 +34,10 @@ def btc():
     while True:
         block_hash = get_block_hash(last_height)
         if block_hash:
-            store_in_big_data([get_block(block_hash)], BTC_BLOCK_TOPIC)
-            
-            last_height += 1
-            with open('checkpoints/btc', 'w') as file:
-                file.write(str(last_height))
+            if store_in_big_data(BTC_BLOCK_TOPIC, get_block(block_hash)):
+                last_height += 1
+                with open('checkpoints/btc', 'w') as file:
+                    file.write(str(last_height))
             
         
 
