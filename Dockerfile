@@ -20,18 +20,20 @@ ADD ./requirements.txt /opt/producer/requirements.txt
 RUN pip3 install --upgrade pip
 RUN pip3 install --upgrade -r /opt/producer/requirements.txt
 
-ADD . /opt/producer
 
-WORKDIR /opt/producer
 
 ENV HTTP_PROXY ''
 ENV HTTPS_PROXY ''
 ENV TZ=Asia/Tehran
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN chmod +x entrypoint.py
+
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
+
+ADD . /opt/producer
+WORKDIR /opt/producer
+RUN chmod +x entrypoint.py
 
 ENTRYPOINT ["python3", "entrypoint.py"]
