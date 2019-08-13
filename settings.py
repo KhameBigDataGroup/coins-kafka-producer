@@ -23,12 +23,12 @@ dictConfig({
       "file": {
         "level": "DEBUG",
         "class": "logging.FileHandler",
-        "filename": "/logs/debug.log",
+        "filename": "debug.log",
         "formatter": "simple"
       }
     },
     "loggers": {
-      "root": {
+      "entrypoint.py": {
         "handlers": [
           "console",
         ],
