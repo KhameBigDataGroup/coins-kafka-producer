@@ -7,6 +7,6 @@ build:
 	docker build -t btc-producer .
 
 up:
-	docker run --name btc-producer -idt -v checkpoints:/opt/producer/checkpoints -e CLIENT_ID='khame' -e BOOSTRAP_SERVER=172.20.0.1:$(PORT) btc-producer
+	docker run --name btc-producer -idt -v checkpoints:/opt/producer/checkpoints -e CLIENT_ID='khame' -e BOOSTRAP_SERVER=172.17.0.1:$(PORT) btc-producer
 
-PORT ?= 9091
+PORT ?= 9092
