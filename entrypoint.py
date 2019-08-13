@@ -11,6 +11,7 @@ def get_block_hash(height):
     response = requests.get("http://{}:{}/rest/blockhashbyheight/{}.json".format(BTC_HOST, BTC_PORT, height))
     
     if response.status_code != 200:
+
         return
     
     return json.loads(response.text)['blockhash']
