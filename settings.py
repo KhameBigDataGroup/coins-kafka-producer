@@ -28,7 +28,7 @@ dictConfig({
       }
     },
     "loggers": {
-      "entrypoint.py": {
+      "bitcoin.py": {
         "handlers": [
           "console",
         ],
@@ -45,9 +45,9 @@ conf = {'bootstrap.servers': os.environ.get('BOOSTRAP_SERVER'),
         }
 
 BTC_BLOCK_TOPIC = 'bitcoin'
-BTC_HOST = '172.17.0.1'
-BTC_PORT = '8332'
+BTC_HOST = os.environ.get('BTC_HOST', '172.17.0.1')
+BTC_PORT = os.environ.get('BTC_PORT', '8332')
 
-ETH_BLOCK_TOPIC = 'bitcoin'
-ETH_HOST = '172.17.0.1'
-ETH_PORT = '8332'
+ETH_BLOCK_TOPIC = 'eth'
+ETH_HOST = os.environ.get('ETC_HOST', '172.17.0.1')
+ETH_PORT = os.environ.get('ETH_PORT', '8545')

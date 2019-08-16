@@ -1,0 +1,29 @@
+version: '3.0'
+services:
+
+  btc:
+    build: .
+    container_name: btc_producer
+    command: bash -c "python3 bitcoin.py"
+    restart: always
+    volumes:
+      - ./checkpoints:/opt/producer/checkpoints
+    environment:
+      - CLIENT_ID=${CLIENT_ID}
+      - BOOSTRAP_SERVER=${BOOSTRAP_SERVER}
+      - BTC_HOST=${BTC_HOST}
+      - BTC_PORT=${BTC_PORT}
+
+  eth:
+    build: .
+    container_name: eth_producer
+    command: bash -c "python3 ethereum.py"
+    restart: always
+    volumes:
+      - ./checkpoints:/opt/producer/checkpoints
+
+    environment:
+      - CLIENT_ID=${CLIENT_ID}
+      - BOOSTRAP_SERVER=${BOOSTRAP_SERVER}
+      - ETH_HOST=${ETH_HOST}
+      - ETH_PORT=${ETH_PORT}
