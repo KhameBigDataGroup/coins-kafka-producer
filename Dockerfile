@@ -35,5 +35,3 @@ ENV LC_ALL en_US.UTF-8
 ADD . /opt/producer
 WORKDIR /opt/producer
 RUN chmod +x entrypoint.py
-
-ENTRYPOINT ["python3", "entrypoint.py"]
