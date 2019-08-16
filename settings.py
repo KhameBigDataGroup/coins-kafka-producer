@@ -28,7 +28,7 @@ dictConfig({
       }
     },
     "loggers": {
-      "bitcoin.py": {
+      "default": {
         "handlers": [
           "console",
         ],

@@ -6,7 +6,7 @@ import logging
 from kafka import store_in_big_data
 from settings import ETH_BLOCK_TOPIC, ETH_HOST, ETH_PORT
 
-logger = logging.getLogger(__file__)
+logger = logging.getLogger("default")
 
 
 def get_block_by_number(number):

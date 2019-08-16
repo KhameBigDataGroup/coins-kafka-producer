@@ -5,7 +5,7 @@ import logging
 from kafka import store_in_big_data
 from settings import BTC_BLOCK_TOPIC, BTC_HOST, BTC_PORT
 
-logger = logging.getLogger(__file__)
+logger = logging.getLogger("default")
 
 
 def get_block_hash(height):
