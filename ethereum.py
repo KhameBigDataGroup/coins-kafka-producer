@@ -2,14 +2,11 @@ import json
 import requests
 import logging
 
-from eth_rpc_client import Client
 
 from kafka import store_in_big_data
 from settings import ETH_BLOCK_TOPIC, ETH_HOST, ETH_PORT
 
 logger = logging.getLogger(__file__)
-
-client = Client(host=ETH_HOST, port=ETH_PORT)
 
 
 def get_block_by_number(number):
