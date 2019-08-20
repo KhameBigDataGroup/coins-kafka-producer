@@ -31,8 +31,9 @@ def store_in_big_data(topic, data):
         flush_queue()
         producer.produce(topic, json.dumps(data).encode('utf-8'), callback=_delivery_report)
         producer.poll(0)
-    except:
+    except Exception as e:
         logger.warning("Unexpected error in storing in big data!")
+        logger.error(e)
         producer.poll(0)
         return False
 
