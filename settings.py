@@ -49,6 +49,10 @@ BTC_BLOCK_TOPIC = 'bitcoin'
 BTC_HOST = os.environ.get('BTC_HOST', '172.17.0.1')
 BTC_PORT = os.environ.get('BTC_PORT', '8332')
 
+LTC_BLOCK_TOPIC = 'litecoin'
+LTC_HOST = os.environ.get('BTC_HOST', '172.17.0.1')
+LTC_PORT = os.environ.get('BTC_PORT', '9332')
+
 ETH_BLOCK_TOPIC = 'eth'
 ETH_HOST = os.environ.get('ETC_HOST', '172.17.0.1')
 ETH_PORT = os.environ.get('ETH_PORT', '8545')
