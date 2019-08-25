@@ -2,8 +2,10 @@ import json
 import requests
 import logging
 
+from hdfs_writer import write_to_hdfs
 from kafka import store_in_big_data
 from settings import BTC_BLOCK_TOPIC, BTC_HOST, BTC_PORT
+from cassandra_write import write_to_cassandra
 
 logger = logging.getLogger("default")
 
@@ -39,7 +41,9 @@ def btc():
         block_hash = get_block_hash(last_height)
         if block_hash:
             logger.info('storing block {}.'.format(block_hash))
-            if store_in_big_data(BTC_BLOCK_TOPIC, get_block(block_hash)):
+            block = get_block(block_hash)
+            if write_to_cassandra(block):
+                write_to_hdfs(block)
                 last_height += 1
                 with open('checkpoints/btc', 'w') as file:
                     file.write(str(last_height))
